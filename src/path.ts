@@ -12,3 +12,4 @@ const paths = {
         return `topics/${topicSlug}/posts/${postId}`;    }
 
 }
+export {paths};
