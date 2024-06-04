@@ -21,12 +21,16 @@ export default function PostCreateForm(){
                             Create a Post
                         </h3>
                        <Input
+                       isInvalid={!!formState.errors.title}
+                       errorMessage={formState.errors.title?.join(",")}
                        name="title"
                        label="Title"
                        labelPlacement="outside"
                        placeholder="Title"
                        /> 
-                       <Input
+                       <Textarea
+                         isInvalid={!!formState.errors.content}
+                         errorMessage={formState.errors.content?.join(",")}
                        name="content"
                        label="Content"
                        labelPlacement="outside"
