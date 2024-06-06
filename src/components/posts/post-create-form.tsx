@@ -31,12 +31,21 @@ export default function PostCreateForm(){
                        <Textarea
                          isInvalid={!!formState.errors.content}
                          errorMessage={formState.errors.content?.join(",")}
-                       name="content"
-                       label="Content"
-                       labelPlacement="outside"
-                       placeholder="Content"
-                       />
+                         name="content"
+                         label="Content"
+                         labelPlacement="outside"
+                        placeholder="Content"
+                        />
+
+                    {formState?.errors._form ? <div className="
+                    rounded p-2 bg-red-200 border border-red-400">{formState.errors._form.join(",")}</div> : null}
+
+                    <FormButton>
+                        Submit
+                    </FormButton>
+                
                     </div>
+                    
                 </form>
             </PopoverContent>
         </Popover>
