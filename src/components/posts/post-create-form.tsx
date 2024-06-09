@@ -4,9 +4,17 @@ import { Input, Button,Textarea, Popover, PopoverContent,PopoverTrigger} from "@
 import * as actions from "@/actions"
 import FormButton from "../common/form-button"
 
-export default function PostCreateForm(){
-    const [formState,action] = useFormState(actions.createPost,{errors:{    
+interface PostCreateProps{
+    slug:string;
+
+}
+
+export default function PostCreateForm({slug}:PostCreateProps){
+
+    console.log("Hello from tjhe post create",slug)
+    const [formState,action] = useFormState(actions.createPost.bind(null,slug),{errors:{    
     }})
+
     return (
         <Popover placement="left">
             <PopoverTrigger>
@@ -21,16 +29,16 @@ export default function PostCreateForm(){
                             Create a Post
                         </h3>
                        <Input
-                       isInvalid={!!formState.errors.title}
-                       errorMessage={formState.errors.title?.join(",")}
+                       isInvalid={!!formState?.errors?.title}
+                       errorMessage={formState?.errors?.title?.join(",")}
                        name="title"
                        label="Title"
                        labelPlacement="outside"
                        placeholder="Title"
                        /> 
                        <Textarea
-                         isInvalid={!!formState.errors.content}
-                         errorMessage={formState.errors.content?.join(",")}
+                         isInvalid={!!formState?.errors?.content}
+                         errorMessage={formState?.errors?.content?.join(",")}
                          name="content"
                          label="Content"
                          labelPlacement="outside"
